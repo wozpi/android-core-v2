@@ -1,4 +1,6 @@
 package com.wozpi.core
 
-class WozViewModel {
+import android.databinding.BaseObservable
+
+open class WozViewModel : BaseObservable() {
 }

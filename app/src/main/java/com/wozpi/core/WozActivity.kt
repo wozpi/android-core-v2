@@ -13,7 +13,16 @@ abstract class WozActivity<T : ViewDataBinding?> : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(setLayoutView())
         mBiding = DataBindingUtil.setContentView<T>(this,setLayoutView())
+
+//        val wozViewModel = WozViewModel()
+//        initBindData(mBiding!!)
+        mBiding!!.setVariable(setNameViewModel(),setViewModelObject())
+
     }
 
     abstract fun setLayoutView():Int
+
+    abstract fun setNameViewModel(): Int
+
+    abstract fun setViewModelObject(): Any
 }
