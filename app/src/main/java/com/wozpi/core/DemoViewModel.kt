@@ -1,11 +1,12 @@
 package com.wozpi.core
 
+import android.content.Context
 import android.databinding.Bindable
-import android.util.Log
 import android.view.View
+import com.wozpi.core.service.ApiCallback
 
 
-class DemoViewModel : WozViewModel(){
+class DemoViewModel(context: Context) : WozViewModel(context){
 
     var name = "Go Pdypham"
 
@@ -19,9 +20,21 @@ class DemoViewModel : WozViewModel(){
         notifyPropertyChanged(BR.nameBeautiful)
     }
 
+    fun getProfile(){
+
+        callApi(DemoApiService.instances.getUserService().getProfile(),object : ApiCallback<User>{
+            override fun getResult(data: User) {
+
+            }
+
+        })
+
+    }
+
 
     fun onClickChange(v: View){
-        setNameBeautiful("wozpi")
-        Log.e("WOW","inside")
+        getProfile()
     }
+
+
 }
