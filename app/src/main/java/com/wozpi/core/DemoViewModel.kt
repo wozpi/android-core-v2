@@ -6,7 +6,7 @@ import android.view.View
 
 
 class DemoViewModel : WozViewModel(){
-//    @Bindable
+
     var name = "Go Pdypham"
 
     @Bindable
