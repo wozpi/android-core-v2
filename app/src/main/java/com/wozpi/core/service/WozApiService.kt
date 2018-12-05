@@ -1,6 +1,7 @@
 package com.wozpi.core.service
 
 import com.wozpi.core.BuildConfig
+import com.wozpi.core.DemoApiService
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -15,6 +16,14 @@ open class WozApiService {
     var mReadTimeOut:Long = 60
     var mWriteTimeOut:Long = 60
 
+    private object Holder  {
+        val INSTANCE = WozApiService()
+    }
+    companion object {
+        val instances : WozApiService by lazy {
+            Holder.INSTANCE
+        }
+    }
 
     init {
         /**
@@ -76,6 +85,10 @@ open class WozApiService {
 
 
     fun <T> createService(cl:Class<T>): T{
+        return mRetrofit.create(cl)
+    }
+
+    fun <T> createServicev2(cl:Class<T>): T{
         return mRetrofit.create(cl)
     }
 

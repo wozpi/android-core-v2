@@ -20,7 +20,8 @@ class DemoViewModel(context: Context) : WozViewModel(context){
         notifyPropertyChanged(BR.nameBeautiful)
     }
 
-    fun getProfile(){
+    private fun getProfile(){
+
 
         callApi(DemoApiService.instances.getUserService().getProfile(),object : ApiCallback<User>{
             override fun getResult(data: User) {

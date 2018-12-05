@@ -50,7 +50,8 @@ open class WozViewModel(context: Context) : BaseObservable(), CallbackViewModel 
             .subscribe({ result ->
                 callback.getResult(result)
             }, { throwable ->
-                // show back button
+                // show error
+
 
             })
 
